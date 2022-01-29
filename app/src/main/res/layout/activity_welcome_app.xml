@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/mendroad"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".WelcomeApp">
+
+    <TextView
+        android:id="@+id/W_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-150dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Welcome \n  DelApp"
+        android:textColor="#FFC907"
+        android:textSize="50dp" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "666501164478",
+    "project_id": "del-app-3fc08",
+    "storage_bucket": "del-app-3fc08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666501164478:android:39c205047e20b620049def",
+        "android_client_info": {
+          "package_name": "com.example.delapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666501164478-b05h19nalcdkrcke2mqc904ug59gvkq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuleo7lWfyIUtH1bk-AaokZc78fKYePDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666501164478-b05h19nalcdkrcke2mqc904ug59gvkq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
