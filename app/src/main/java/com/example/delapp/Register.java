@@ -13,10 +13,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -26,11 +36,12 @@ public class Register extends AppCompatActivity {
     private EditText fone;
     private Button reglog;
     private TextView registered;
-    private FirebaseAuth regAuth;
+    private FirebaseAuth firebaseAuth;
     private ProgressBar probar;
+    private FirebaseFirestore firestore;
+    private String userID;
 
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +55,10 @@ public class Register extends AppCompatActivity {
         registered = findViewById(R.id.Al_reg);
         probar = findViewById(R.id.pros);
 
-        regAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
-        if(regAuth.getCurrentUser()!= null){
+        if(firebaseAuth.getCurrentUser()!= null){
             startActivity(new Intent(Register.this,MainActivity.class));
             finish();
         }
@@ -54,8 +66,8 @@ public class Register extends AppCompatActivity {
         reglog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = fullname.getText().toString().trim();
-                String mphone = fone.getText().toString().trim();
+                String name = fullname.getText().toString();
+                String mphone = fone.getText().toString();
                 String mail = gmail.getText().toString().trim();
                 String pass = password.getText().toString().trim();
 ;
@@ -71,21 +83,44 @@ public class Register extends AppCompatActivity {
                     gmail.setError("gmail is Required");
                     return;
                 }
-                if(password.length()<6|| TextUtils.isEmpty(pass)){
+                if(TextUtils.isEmpty(pass)){
+                    password.setError("password Required");
+                    return;
+                }
+                if(password.length()<6){
                     password.setError("password is not Strong");
                     return;
                 }
                 probar.setVisibility(view.VISIBLE);
 
-                regAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,"Account Created Successfully", Toast.LENGTH_SHORT).show();
+                            userID = firebaseAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = firestore.collection("user").document(userID);
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("FullName",name);
+                            user.put("Phone",mphone);
+                            user.put("Email",mail);
+
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Register.this,"user now have profile",Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Register.this, "Profile creation Failed",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }else {
                             Toast.makeText(Register.this,"Error!"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
                             probar.setVisibility(view.GONE);
                         }
                     }

@@ -10,17 +10,43 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello There!"
+        android:text=" Welcome "
+        android:textSize="24dp"
+        android:layout_marginTop="-30dp"/>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:layout_marginTop="10dp"
         android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/profil_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text="UserPhoneNumber"/>
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text="UserEmailAdress"/>
 
     <Button
         android:id="@+id/Lobtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="logout"
-        android:backgroundTint="@color/black"/>
+        android:layout_marginTop="206dp"
+        android:backgroundTint="@color/black"
+        android:text="logout" />
 
 </LinearLayout>
