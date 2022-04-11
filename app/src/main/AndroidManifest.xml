@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.delapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DelApp">
-        <activity android:name=".Register"></activity>
+        <activity
+            android:name=".Main_Dashboard"
+            android:label="@string/title_activity_main__dashboard"
+            android:theme="@style/Theme.DelApp.NoActionBar"></activity>
+        <activity android:name=".Register" />
         <activity android:name=".WelcomeApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +27,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

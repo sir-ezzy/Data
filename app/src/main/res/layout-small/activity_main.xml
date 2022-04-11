@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:text=" Welcome "
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="139dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/green_profile" />
+
+    <ImageView
+        android:layout_width="37dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="130dp"
+        android:src="@drawable/green_profile" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-40dp"
+        android:layout_marginRight="70dp"
+        android:text="Full Name: "/>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:layout_marginTop="-20dp"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="130dp"
+        android:src="@drawable/round_phone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="85dp"
+        android:text="Phone: "/>
+
+    <TextView
+        android:id="@+id/profil_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PhoneNumber"
+        android:layout_marginTop="-23dp"/>
+
+    <ImageView
+        android:id="@+id/image_mail"
+        android:layout_width="28dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="130dp"
+        android:src="@drawable/red_mail" />
+
+    <TextView
+        android:id="@+id/pro_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-25dp"
+        android:layout_marginRight="85dp"
+        android:text="Email: "/>
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserEmailAdress"
+        android:layout_marginTop="-22dp"/>
+
+    <Button
+        android:id="@+id/Lobtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/black"
+        android:text="logout" />
+
+</LinearLayout>

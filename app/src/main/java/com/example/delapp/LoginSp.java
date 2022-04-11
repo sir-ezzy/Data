@@ -1,9 +1,5 @@
 package com.example.delapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +10,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -73,9 +73,9 @@ public class LoginSp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginSp.this,"user logged in ", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginSp.this,MainActivity.class));
+                            startActivity(new Intent(LoginSp.this,Main_Dashboard.class));
                         }else {
-                            Toast.makeText(LoginSp.this,"Error"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginSp.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(view.GONE);
                         }
 
@@ -112,7 +112,7 @@ public class LoginSp extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginSp.this,"An Error Just Occurred"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginSp.this,"An Error Just Occurred \n"+ e.getMessage(),Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

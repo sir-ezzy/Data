@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
@@ -97,6 +98,20 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
+                            FirebaseUser fuser = firebaseAuth.getCurrentUser();
+                           fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                               @Override
+                               public void onSuccess(Void aVoid) {
+                               Toast.makeText(Register.this, "check Email for Verification", Toast.LENGTH_SHORT).show();
+                               }
+                           }).addOnFailureListener(new OnFailureListener() {
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+                                   Toast.makeText(Register.this , "Error Just Occured" , Toast.LENGTH_SHORT).show();
+                               }
+                           });
+
                             Toast.makeText(Register.this,"Account Created Successfully", Toast.LENGTH_SHORT).show();
                             userID = firebaseAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = firestore.collection("user").document(userID);
